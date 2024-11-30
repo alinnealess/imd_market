@@ -7,7 +7,6 @@
     android:gravity="top|center_horizontal"
     android:background="#faf1e8">
 
-
     <!-- Título IMDMARKET -->
     <TextView
         android:id="@+id/tv_title"
@@ -22,7 +21,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_login_label"
+        android:id="@+id/tv_alteracao_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -34,10 +33,9 @@
         android:id="@+id/etCodigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Código do Produto"
+        android:hint="Código do Produto (Obrigatório)"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginHorizontal="24dp"
         android:inputType="number" />
 
     <!-- Campo para Nome do Produto (Opcional) -->
@@ -47,8 +45,7 @@
         android:layout_height="wrap_content"
         android:hint="Nome do Produto (Opcional)"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp" />
+        android:layout_marginHorizontal="24dp" />
 
     <!-- Campo para Descrição do Produto (Opcional) -->
     <EditText
@@ -57,8 +54,7 @@
         android:layout_height="wrap_content"
         android:hint="Descrição do Produto (Opcional)"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginHorizontal="24dp"
         android:inputType="textMultiLine" />
 
     <!-- Campo para Estoque (Opcional) -->
@@ -68,8 +64,7 @@
         android:layout_height="wrap_content"
         android:hint="Estoque (Opcional)"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginHorizontal="24dp"
         android:inputType="number" />
 
     <!-- GridLayout para Botões -->
@@ -79,8 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"
-        android:columnCount="2"
-        android:rowCount="1">
+        android:columnCount="2">
 
         <!-- Botão Salvar -->
         <Button
@@ -101,7 +95,18 @@
             android:layout_margin="16dp"
             android:background="@drawable/botao_arredondado"
             android:textColor="@android:color/white" />
-
     </GridLayout>
+
+    <!-- Botão Voltar para o Menu -->
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/botao_arredondado"
+        android:text="Voltar"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

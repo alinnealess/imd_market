@@ -7,7 +7,6 @@
     android:gravity="top|center_horizontal"
     android:background="#faf1e8">
 
-
     <!-- Título IMDMARKET -->
     <TextView
         android:id="@+id/tv_title"
@@ -22,11 +21,11 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_login_label"
+        android:id="@+id/tv_listagem_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="ALTERAR PRODUTO"
+        android:text="LISTAGEM DE PRODUTOS"
         android:textSize="20sp" />
 
     <!-- ListView para exibir os produtos -->

@@ -1,20 +1,40 @@
 package com.example.imdmarket
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Referenciando os botões
+        val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
+        val btnAlterar = findViewById<Button>(R.id.btnAlterar)
+        val btnExcluir = findViewById<Button>(R.id.btnExcluir)
+        val btnListar = findViewById<Button>(R.id.btnListar)
+
+        // Configurando os botões para abrir novas atividades
+        btnCadastrar.setOnClickListener {
+            val intent = Intent(this, CadastroActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnAlterar.setOnClickListener {
+            val intent = Intent(this, AlteracaoActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnExcluir.setOnClickListener {
+            val intent = Intent(this, ExclusaoActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnListar.setOnClickListener {
+            val intent = Intent(this, ListagemActivity::class.java)
+            startActivity(intent)
         }
     }
 }

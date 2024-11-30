@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="ALTERAR PRODUTO"
+        android:text="EXCLUIR PRODUTO"
         android:textSize="20sp" />
 
     <!-- Campo para Código do Produto -->
@@ -71,5 +71,17 @@
             android:textColor="@android:color/white" />
 
     </GridLayout>
+
+    <!-- Botão Voltar para o Menu -->
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/botao_arredondado"
+        android:text="Voltar"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
