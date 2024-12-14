@@ -74,7 +74,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "IMDMarketDB"
 
     fun listAllProdutos(): ArrayList<Produto> {
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM produtos ORDER BY nome ASC", null) // Ordenado por nome
+        val cursor = db.rawQuery("SELECT * FROM produtos ORDER BY codigo ASC", null) // Ordenado por codigo
         val produtos = ArrayList<Produto>()
 
         if (cursor.count > 0) {
