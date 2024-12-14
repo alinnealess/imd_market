@@ -115,4 +115,27 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "IMDMarketDB"
         db.close()
         return exists
     }
+    fun getProdutoByCodigo(codigo: String): Produto? {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM produtos WHERE codigo = ?",
+            arrayOf(codigo)
+        )
+
+        return if (cursor.moveToFirst()) {
+            val produto = Produto(
+                codigoProduto = cursor.getInt(cursor.getColumnIndexOrThrow("codigo")).toString(),
+                nomeProduto = cursor.getString(cursor.getColumnIndexOrThrow("nome")),
+                descricaoProduto = cursor.getString(cursor.getColumnIndexOrThrow("descricao")),
+                estoque = cursor.getInt(cursor.getColumnIndexOrThrow("estoque"))
+            )
+            cursor.close()
+            db.close()
+            produto
+        } else {
+            cursor.close()
+            db.close()
+            null
+        }
+    }
 }

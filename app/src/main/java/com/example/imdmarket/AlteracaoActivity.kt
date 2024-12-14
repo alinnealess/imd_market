@@ -27,32 +27,40 @@ class AlteracaoActivity : AppCompatActivity() {
         // Lógica do botão Salvar
         salvarButton.setOnClickListener {
             val codigo = codigoEditText.text.toString()
-            val nome = nomeEditText.text.toString().ifBlank { null }
-            val descricao = descricaoEditText.text.toString().ifBlank { null }
-            val estoque = estoqueEditText.text.toString().toIntOrNull()
 
             if (codigo.isBlank()) {
                 Toast.makeText(this, "O código do produto é obrigatório!", Toast.LENGTH_SHORT).show()
-            } else if (!db.isProdutoExistente(codigo)) {
+                return@setOnClickListener
+            }
+
+            // Verificar se o produto existe
+            val produtoExistente = db.getProdutoByCodigo(codigo)
+            if (produtoExistente == null) {
                 Toast.makeText(this, "Produto não encontrado!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Manter valores antigos se os novos não forem preenchidos
+            val nome = nomeEditText.text.toString().ifBlank { produtoExistente.nomeProduto }
+            val descricao = descricaoEditText.text.toString().ifBlank { produtoExistente.descricaoProduto }
+            val estoque = estoqueEditText.text.toString().toIntOrNull() ?: produtoExistente.estoque
+
+            // Atualizar o produto
+            val produtoAtualizado = Produto(
+                codigoProduto = codigo,
+                nomeProduto = nome,
+                descricaoProduto = descricao,
+                estoque = estoque
+            )
+            val result = db.updateProduto(produtoAtualizado)
+
+            if (result > 0) {
+                Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_SHORT).show()
+                // Voltar ao menu
+                startActivity(Intent(this, MenuActivity::class.java))
+                finish()
             } else {
-                // Atualizar o produto
-                val produto = Produto(
-                    codigoProduto = codigo,
-                    nomeProduto = nome ?: "",
-                    descricaoProduto = descricao ?: "",
-                    estoque = estoque ?: 0
-                )
-                val result = db.updateProduto(produto)
-                if (result > 0) {
-                    Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_SHORT).show()
-                    // Voltar ao menu
-                    val intent = Intent(this, MenuActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this, "Erro ao alterar o produto!", Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(this, "Erro ao alterar o produto!", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -63,8 +71,7 @@ class AlteracaoActivity : AppCompatActivity() {
 
         // Lógica do botão Voltar
         voltarButton.setOnClickListener {
-            val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MenuActivity::class.java))
             finish()
         }
     }
@@ -80,4 +87,5 @@ class AlteracaoActivity : AppCompatActivity() {
         descricaoEditText.text.clear()
         estoqueEditText.text.clear()
     }
+
 }
