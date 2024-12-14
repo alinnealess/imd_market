@@ -10,31 +10,30 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        // Referenciando os botões
+        // Instância do banco de dados
+        val db = DatabaseHelper(this)
+
+        // Referenciar os botões da interface
         val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
         val btnAlterar = findViewById<Button>(R.id.btnAlterar)
         val btnExcluir = findViewById<Button>(R.id.btnExcluir)
         val btnListar = findViewById<Button>(R.id.btnListar)
 
-        // Configurando os botões para abrir novas atividades
+        // Navegação para as atividades correspondentes
         btnCadastrar.setOnClickListener {
-            val intent = Intent(this, CadastroActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CadastroActivity::class.java))
         }
 
         btnAlterar.setOnClickListener {
-            val intent = Intent(this, AlteracaoActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AlteracaoActivity::class.java))
         }
 
         btnExcluir.setOnClickListener {
-            val intent = Intent(this, ExclusaoActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ExclusaoActivity::class.java))
         }
 
         btnListar.setOnClickListener {
-            val intent = Intent(this, ListagemActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ListagemActivity::class.java))
         }
     }
 }
