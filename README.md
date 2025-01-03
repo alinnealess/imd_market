@@ -1,7 +1,7 @@
 # IMDMarket - Gerenciador de Estoques
 
 ## Descrição do Projeto
-O **IMDMarket** é um aplicativo Android desenvolvido como parte da avaliação da segunda unidade da  disciplina **Programação de Dispositivos Móveis** de 2024.2 da Universidade Federal do Rio Grande do Norte. Este projeto tem como objetivo criar um gerenciador de estoques para supermercados, permitindo realizar operações de cadastro, alteração, exclusão e listagem de produtos, com persistência de dados utilizando SQLite.
+O **IMDMarket** é um aplicativo Android desenvolvido como parte da avaliação da segunda unidade da  disciplina **Desenvolvimento de Dispositivos Móveis** de 2024.2 da Universidade Federal do Rio Grande do Norte. Este projeto tem como objetivo criar um gerenciador de estoques para supermercados, permitindo realizar operações de cadastro, alteração, exclusão e listagem de produtos, com persistência de dados utilizando SQLite.
 
 
 ---
